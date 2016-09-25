@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Client;
 
 class ClientsTable extends Migration
 {
@@ -23,6 +24,12 @@ class ClientsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+        factory(Client::class)->create([
+            'name'=> 'Lucas',
+            'password'=> bcrypt('123456'),
+
+        ]);
+
     }
 
     /**

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\User;
 
 class CreateUsersTable extends Migration
 {
@@ -22,6 +23,12 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        factory(User::class)->create([
+            'name'=> 'Mr Mestre Lucas',
+            'username'=> 'admin',
+            'email'=> 'reedtube_goldenpt@hotmail.com',
+            'password'=> bcrypt('123456'),
+        ]);
     }
 
     /**
