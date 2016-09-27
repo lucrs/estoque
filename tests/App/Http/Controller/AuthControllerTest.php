@@ -33,7 +33,7 @@ class AuthControllerTest extends \TestCase
         ];
 
         $user = [
-          'username'=>'email',
+          'username'=>'Lucas',
             'password'=> bcrypt($data['password']),
             'email'=>'lucas.mech@hotmail.com',
 
@@ -42,11 +42,21 @@ class AuthControllerTest extends \TestCase
         factory(User::class)->create($user);
 
         $this->post('auth/login',$data);
+
         $this->seeStatusCode(200);
         $this->seeJson([
             'username'=>'Lucas',
         ]);
     }
+    public function testCantLogin()
+    {
+        $data=[
+            'username'=>uniqid(),
+            'password'=>'teste',
+        ];
+        $this->post('auth/login',$data);
 
+        $this->seeStatusCode(401);
+    }
 
 }
