@@ -24,11 +24,7 @@ class ClientsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        factory(Client::class)->create([
-            'name'=> 'Lucas',
-            'password'=> bcrypt('123456'),
 
-        ]);
 
     }
 
@@ -39,6 +35,6 @@ class ClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('clients');
     }
 }

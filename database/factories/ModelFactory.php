@@ -11,7 +11,7 @@
 |
 */
 use App\User;
-use App\Client;
+
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
@@ -24,14 +24,4 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
-$factory->define(App\Client::class, function (Faker\Generator $faker) {
-    static $password;
 
-    return [
-        'name' => $faker->name,
-        'username'=>$faker->unique()->username,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
-    ];
-});
